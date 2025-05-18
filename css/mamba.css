@@ -827,13 +827,22 @@ footer .text span a:hover {
     width: 100%;
     background: #111;
   }
-
+   .DivBar {
+    position: relative;
+  }
+  
   .DivBar.active .menu {
     display: flex;
   }
 
   .menu-btn {
     display: block;
+    position: absolute;  
+    top: 15px;           
+    right: 20px;        
+    font-size: 24px;     
+    z-index: 1001;       
+    color: white; 
     cursor: pointer;
   }
 }
