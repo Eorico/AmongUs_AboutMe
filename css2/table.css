@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background: url("../Images/bga.gif") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Press Start 2P', sans-serif;  
+    padding: 75px;
+}
+
+
+ 
+th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px;
+    background-color: transparent;
+    font-size: inherit;  
+    font-family: 'Press Start 2P', sans-serif; 
+}
+
+ 
+th {
+    background-color: rgba(255, 0, 0, 0.8) !important; 
+    color: white;
+    font-size: 1rem; 
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.references {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);   
+    border-radius: 10px;
+    margin-top: 20px;
+    z-index: 1;  
+    width: 100%;
+    max-width: 500px;  
+    margin-left: auto;  
+    margin-right: auto;  
+    padding-bottom: 50px;  
+    overflow-y: auto; 
+    max-height: 350px;  
+}
+
+.references h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;  
+}
+
+.references ul {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    display: block;  
+}
+
+.references ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;  
+}
+
+.references ul li a {
+    color: #d13100;
+    text-decoration: none;
+}
+
+.references ul li a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.TableFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: url("../Images/bga.gif") no-repeat center center fixed;
+    background-size: cover;
+    padding: 15px;
+    text-align: center;
+    z-index: 100;
+}
+
+.TableFooter .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.TableFooter .text span {
+    color: #fff;
+    text-align: center;
+}
+
+.TableFooter .text span a {
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: none;
+}   
+
+.TableFooter .text span a:hover {
+    text-decoration: underline;
+    color: #d13100;
+}
+
+.floatingVent {
+    position: fixed;
+    left: 20px;          
+    top: 18%;            
+    transform: translateY(-50%);   
+    animation: floatVent 3s ease-in-out infinite;  
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.floatingVent img {
+    width: 80px;   
+    height: 40px;
+}
+
+.floatingVent:hover img{
+    content: url('../Images/vent.gif');
+}
+
+@keyframes floatVent {
+    0% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-60%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(0); }
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    html, body {
+        padding: 50px;
+    }
+
+    th, td {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .references {
+        padding: 15px;
+        width: 90%;
+        max-width: 450px;
+    }
+
+    .references h5 {
+        font-size: 1.3rem;
+    }
+
+    .references ul li {
+        font-size: 0.9rem;
+    }
+
+    .TableFooter {
+        padding: 10px;
+    }
+
+    footer .text span {
+        font-size: 15px;
+    }
+
+    .floatingVent {
+        left: 15px;
+        top: 20%;
+    }
+
+    .floatingVent img {
+        width: 60px;
+        height: 30px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    html, body {
+        padding: 30px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .references {
+        padding: 10px;
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .references h5 {
+        font-size: 1.1rem;
+    }
+
+    .references ul li {
+        font-size: 0.8rem;
+    }
+
+    .TableFooter {
+        padding: 8px;
+    }
+
+    .floatingVent {
+        left: 10px;
+        top: 22%;
+    }
+
+    .floatingVent img {
+        width: 50px;
+        height: 25px;
+    }
+}

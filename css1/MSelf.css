@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.insta {
+    background: url("../images1/bga.gif ") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.IG-title {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+    
+.IG-title:hover {
+    color: red;
+}
+
+.navbarIG {
+    background:url("../images1/bga.gif ") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 30px 20px; 
+    height: 100px;
+}
+.IGnavtitle h2{
+    position: absolute;  
+    left: 50%;  
+    top: 20px;  
+    transform: translateX(-50%);  
+    text-align: center;
+    z-index: 1;  
+    font-size: 25px;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.navbar-brandIG {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-brandIG img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brandIG .animated-img {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navbar-brandIG .static-img {
+    opacity: 1;
+    pointer-events: auto;
+    width: 80px;
+    height: 40px;
+}
+
+.navbar-brandIG:hover .static-img {
+    opacity: 0;
+}
+
+.navbar-brandIG:hover .animated-img {
+    opacity: 1;
+    transform: scale(1.1); 
+    width: 80px;
+    height: 40px;
+}
+
+.IGgrid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.folder {
+    position: relative;
+    background: url('../images1/folder.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    height: 250px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s ease;
+    border: none;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 1;
+}
+
+
+.folder.open {
+    transform: scale(1.2);   
+}
+
+.folder:hover {
+    transform: scale(1.08); 
+}
+
+.folder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 4px solid #ffffffd7;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.folder.open img {
+    opacity: 1;
+}
+
+.folder-label {
+    position: absolute;
+    top: 10px;   
+    left: 15px;  
+    transform: rotate(-10deg);  
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(250, 24, 8, 0.582);  
+    padding: 5px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);   
+    text-align: center;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;   
+}
+
+.folder.open .folder-label {
+    opacity: 0;   
+}
+
+
+@keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.IG-footer {
+    text-align: center;
+    padding: 15px;
+    background: url("../images1/bga.gif") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;  
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;  
+    z-index: 10;  
+}
+
+footer .text span {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+}
+
+footer .text span a {
+    font-weight: 500;
+    color: #FFF;
+    text-decoration: none;
+}
+
+footer .text span a:hover {
+    text-decoration: underline;
+    color: #d13100;
+}
+

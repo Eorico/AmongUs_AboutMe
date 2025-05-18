@@ -1,0 +1,1053 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dbd9d9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f30a0a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d13100;
+}
+
+/* .MainNavbar styling */
+.MainNav {
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 998;
+  transition: all 0.3s ease;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.MainNav.sticky {
+  background: url("../Images/amongus.gif") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 13px 0;
+}
+
+.MainNav .DivBar {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.MainNav .DivBar .logo a {
+  font-weight: 500;
+  font-size: 45px;
+  color: #f80d0d;
+  text-decoration: none;
+}
+
+.MainNav.sticky .DivBar .logo a {
+  color: #ffffff;
+}
+
+.MainNav .DivBar .menu {
+  display: flex;
+  position: relative;
+}
+
+.MainNav .DivBar .menu li {
+  list-style: none;
+  margin: 0 20px;
+}
+
+.DivBar .menu a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 6px 0;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.DivBar .menu a:hover {
+  color: #f70b0b;
+}
+
+.MainNav.sticky .menu a {
+  color: #f10000;
+}
+
+.MainNav.sticky .menu a:hover {
+  color: #fcfcfc;
+}
+
+.DivBar .media-icons a {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0 6px;
+}
+
+.DivBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: max-height 0.3s ease;
+}
+
+.MainNav.sticky .media-icons a {
+  color: #FFF;
+}
+
+ 
+.menu .MoreOptions {
+  position: relative;
+}
+
+ 
+.menu .DropOptions {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 999;
+}
+ 
+.menu .MoreOptions:hover .DropOptions {
+  display: block;
+}
+
+ 
+.menu .DropOptions li a {
+  color: #fff;
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+ 
+.menu .DropOptions li a:hover {
+  background-color: #f80d0d;
+  color: #fff;
+}
+
+
+/* MainNavigation Menu Button CSS */
+.MainNav .menu-btn,
+.DivBar .menu {
+  position: fixed;
+  color: #fff;
+  right: 30px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.MainNav .menu-btn {
+  color: #f44040;
+}
+
+.MainNav.sticky .menu-btn {
+  color: #FFF;
+}
+
+.DivBar .menu .menu-btn {
+  color: #fff;
+}
+
+/* home section styling */
+.HomeSec {
+  height: 100vh;
+  width: 100%;
+  background: url("../Images/amongus.gif") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.HomeSec .HomeSec-content {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.HomeSec .text-one {
+  font-size: 25px;
+  color: #e4e1e1;
+}
+
+.HomeSec .text-two {
+  color: #e4e1e1;
+  font-size: 75px;
+  font-weight: 600;
+  margin-left: -3px;
+}
+
+.HomeSec .text-three {
+  font-size: 40px;
+  margin: 5px 0;
+  color: #990404;
+}
+
+.HomeSec .text-four {
+  font-size: 23px;
+  margin: 5px 0;
+  color: #e4e1e1;
+}
+
+
+
+/* About Section Styling */
+ 
+section {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  padding-top: 40px;
+  background: rgb(248, 247, 247);
+}
+
+section .content {
+  width: 80%;
+  height: 90vh;
+  margin: 40px auto;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.AboutSec .AboutSec-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section .title {
+  font-family: 'Press Start 2P', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+section .title span {
+  color: #0E2431;
+  font-size: 28px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+section .title span::before,
+section .title span::after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: rgb(217,181,184);
+  background: linear-gradient(90deg, rgba(24, 23, 23, 0.965) 12%, rgba(245,14,14,1) 50%);
+  left: 0;
+  bottom: 0;
+}
+
+section .title span::after {
+  bottom: -7px;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.AboutSec .AboutSec-details .left {
+  width: 45%;
+}
+
+.AboutSec .left img {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.AboutSec-details .right {
+  width: 60%;
+}
+.topic{
+  font-family: 'Press Start 2P', sans-serif;
+  color: #0E2431;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+section .Fav {
+  color: #0E2431;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.AboutSec-details .right p {
+  font-family: 'Press Start 2P', sans-serif;
+  text-align: justify;
+  color: #504d4d;
+  font-size: 14px;
+}
+
+section .AboutButton {
+  margin: 16px 0;
+}
+
+section .AboutButton button {
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 20px;
+  font-family: 'Press Start 2P', sans-serif;
+  font-weight: 400;
+  background: rgb(209,6,186);
+  background: linear-gradient(94deg, rgb(2, 2, 2) 0%, rgba(114, 111, 111, 0.965) 100%);
+  color: #fff;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+section .AboutButton button:hover {
+  border-color: rgba(223,90,90,0.9654236694677871);
+  background-color: #fff;
+  background:  url("../Images/amongus.gif") no-repeat;
+  color: rgba(223,90,90,0.9654236694677871);
+}
+
+/* My Skills CSS */
+.SkillsSec {
+  background: #bbc1c7;
+}
+
+.SkillsSec .content {
+  padding: 40px 0;
+}
+
+.SkillsSec .SkillsSec-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SkillsSec-details .text {
+  width: 50%;
+}
+
+.SkillsSec-details p {
+  color: #504d4d;
+  font-size: 14px;
+  text-align: justify;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.SkillsSec .SkillsSec-details .experience {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.SkillsSec-details .experience .num {
+  color: #ff0000;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 80px;
+}
+
+.SkillsSec-details .experience .exp {
+  color: #0E2431;
+  margin-left: 20px;
+  font-size: 13px;
+  font-family: 'Press Start 2P', sans-serif;
+  font-weight: 500;
+  margin: 0 6px;
+}
+
+.SkillsSec-details .boxes {
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.SkillsSec-details .box {
+  width: calc(100% / 2 - 20px);
+  margin: 20px 0;
+}
+
+.SkillsSec-details .boxes .code1 {
+  font-size: 20px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #f48840;
+}
+
+.SkillsSec-details .boxes .code2 {
+  font-size: 20px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #102a70;
+}
+
+.SkillsSec-details .boxes .code3 {
+  font-size: 20px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #e5e768;
+}
+
+.SkillsSec-details .boxes .code4 {
+  font-size: 20px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #f3d321;
+}
+
+.SkillsSec-details .boxes .per1 {
+  font-size: 60px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #f48840;
+}
+
+.SkillsSec-details .boxes .per2 {
+  font-size: 60px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #102a70;
+}
+
+.SkillsSec-details .boxes .per3 {
+  font-size: 60px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #e5e768;
+}
+
+.SkillsSec-details .boxes .per4 {
+  font-size: 60px;
+  font-family: 'Press Start 2P', sans-serif;
+  color: #f3d321;
+}
+
+/* My Favorites CSS */
+.FavoritesSec .boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.FavoritesSec .boxes .box {
+  margin: 20px 0;
+  width: calc(100% / 3 - 20px);
+  text-align: center;
+  border-radius: 12px;
+  padding: 30px 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  cursor: default;
+  transition: all 0.4s ease;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.FavoritesSec .boxes .box:hover {
+  background: #f77b5b;
+  color: #fff;
+}
+
+.FavoritesSec .boxes .box .icon {
+  height: 50px;
+  width: 50px;
+  background: #e41414;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
+  color: #fff;
+  margin: 0 auto 10px auto;
+  transition: all 0.4s ease;
+}
+
+.boxes .box:hover .icon {
+  background-color: #fff;
+  color: #141414;
+}
+
+.FavoritesSec .boxes  .Fav,
+.FavoritesSec .boxes  p {
+  color: #0a0a0a;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 25px;
+  transition: all 0.4s ease;
+}
+
+.FavoritesSec .boxes .box:hover .Fav,
+.FavoritesSec .boxes .box:hover p {
+  color: #0E2431;
+  transition: all 0.4s ease;
+}
+
+.FavoritesSec .boxes .box:hover .Fav,
+.FavoritesSec .boxes .box:hover p {
+  color: #f00808;
+}
+
+ 
+.FavoritesSec .boxes .box:nth-child(1)
+.FavoritesSec .boxes .box:nth-child(2) 
+.FavoritesSec .boxes .box:nth-child(3)
+.FavoritesSec .boxes .box:nth-child(4)
+.FavoritesSec .boxes .box:nth-child(5)
+.FavoritesSec .boxes .box:nth-child(6) {  
+  transition: all 0.4s ease;  
+}
+
+.FavoritesSec .boxes .box:nth-child(1):hover {
+  background: url('../Images/post.webp') no-repeat center center/cover; 
+  transform: scale(1.1);  
+  filter: brightness(1.2);    
+}
+
+.FavoritesSec .boxes .box:nth-child(2):hover {
+  background: url('../Images/venom.avif') no-repeat center center/cover;  
+  transform: scale(1.1);  
+  filter: brightness(1.2);    
+}
+
+.FavoritesSec .boxes .box:nth-child(3):hover {
+  background: url('../Images/black.jpg') no-repeat center center/cover;  
+  transform: scale(1.1);  
+  filter: brightness(1.2);  
+}
+
+.FavoritesSec .boxes .box:nth-child(4):hover {
+  background: url('../Images/terraria.jpg') no-repeat center center/cover;  
+  transform: scale(1.1);  
+  filter: brightness(1.2);   
+}
+
+.FavoritesSec .boxes .box:nth-child(5):hover {
+  background: url('../Images/motor.jpg') no-repeat center center/cover;  
+  transform: scale(1.1);  
+  filter: brightness(1.2);   
+}
+
+.FavoritesSec .boxes .box:nth-child(6):hover {
+  background: url('../Images/prog.gif') no-repeat center center/cover; 
+  transform: scale(1.1);  
+  filter: brightness(1.2);   
+}
+
+/* Contact Section CSS */
+ 
+.ContactSec {
+  background: url("../Images/amongus.gif") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+ 
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ 
+.contact-form {
+  font-family: 'Press Start 2P', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  margin: 20px 0;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  color: white;
+  transition: 0.3s ease;
+}
+
+ 
+.input-group label {
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+ 
+.input-group input:focus + label, 
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+  top: -10px;
+  left: 10px;
+  font-size: 14px;
+  color: #dd1818;
+}
+
+ 
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-bottom: 2px solid #dd1818;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 204, 255, 0.3);
+}
+
+ 
+.send-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: linear-gradient(135deg, #dd1818, #881602);
+  color: white;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: bold;
+}
+
+ 
+.send-btn:hover {
+  background: linear-gradient(135deg, #dd1818, #881602);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(0, 204, 255, 0.5);
+}
+
+footer {
+  background: url("../Images/amongus.gif") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 15px 0;
+  text-align: center;
+  font-family: 'Press Start 2P', sans-serif;  
+}
+
+footer .text span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
+}
+
+footer .text span a {
+  font-weight: 500;
+  color: #FFF;
+  text-decoration: none;
+}
+
+footer .text span a:hover {
+  text-decoration: underline;
+  color: #d13100;
+}
+
+ 
+.scroll-button a {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  background: #adb7d3;
+  padding: 7px 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+
+ 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);  
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);  
+  }
+}
+
+ 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);  
+  }
+}
+
+ 
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(20px);  
+  transition: opacity 1s ease-out, transform 1s ease-out;   
+}
+
+.scroll-animation.visible {
+  animation: fadeIn 2s forwards;  
+}
+
+.scroll-animation.hidden {
+  animation: fadeOut 3s forwards; 
+}
+
+
+@media (max-width: 768px) {
+  .contact-form {
+      width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .MainNav .DivBar {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .MainNav .DivBar .menu {
+    display: none; 
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .MainNav .DivBar .menu.active {
+    display: block;  
+  }
+
+  .MainNav .menu-btn {
+    display: block;
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .HomeSec .text-two {
+    font-size: 50px;  
+  }
+
+  .HomeSec .text-three {
+    font-size: 30px;
+  }
+
+  .AboutSec .AboutSec-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .AboutSec .left,
+  .AboutSec .right {
+    width: 100%;
+  }
+
+  .SkillsSec-details {
+    flex-direction: column;
+  }
+
+  .SkillsSec-details .text {
+    width: 100%;
+  }
+
+  .SkillsSec-details .boxes {
+    width: 100%;
+  }
+
+  .FavoritesSec .boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .FavoritesSec .boxes .box {
+    width: 90%;
+  }
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #111;
+  }
+
+  .DivBar.active .menu {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+    cursor: pointer;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .MainNav .DivBar .logo a {
+    font-size: 30px;
+  }
+
+  .HomeSec {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .HomeSec .text-two {
+    font-size: 40px;
+  }
+
+  .HomeSec .button button {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  section .title span {
+    font-size: 30px;
+  }
+
+  .AboutSec .left img {
+    height: 250px;
+    width: 250px;
+  }
+
+  .SkillsSec-details .experience .num {
+    font-size: 50px;
+  }
+
+  .SkillsSec-details .boxes .box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .FavoritesSec .boxes .box {
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 90%;
+  }
+}
+
+
+ 
+@media (max-width: 1190px) {
+  section .content {
+    width: 85%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .AboutSec .AboutSec-details {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .AboutSec .AboutSec-details .left {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .AboutSec-details .right {
+    width: 90%;
+    margin: 40px 0;
+  }
+
+  .services .boxes .box {
+    margin: 20px 0;
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .AboutSec .left img {
+    height: 350px;
+    width: 350px;
+  }
+}
+
+@media (max-width: 750px) {
+  .MainNav .DivBar {
+    width: 90%;
+  }
+
+  .MainNav .DivBar .menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    background: #0E2431;
+    height: 100vh;
+    max-width: 400px;
+    width: 100%;
+    padding-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease;
+  }
+
+  .DivBar.active .menu {
+    left: 0;
+  }
+
+  .MainNav .DivBar .menu a {
+    font-size: 23px;
+    display: block;
+    color: #fff;
+    margin: 15px 0;
+  }
+
+  .MainNav.sticky .menu a:hover {
+    color: #4070f4;
+  }
+
+  .MainNav .DivBar .media-icons {
+    display: none;
+  }
+
+  .MainNav .menu-btn,
+  .DivBar .menu  {
+    display: block;
+  }
+
+  .HomeSec .text-two {
+    font-size: 65px;
+  }
+
+  .HomeSec .text-three {
+    font-size: 35px;
+  }
+
+  .SkillsSec .SkillsSec-details {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .SkillsSec-details .text {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .SkillsSec-details .boxes {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .services .boxes .box {
+    margin: 20px 0;
+    width: 100%;
+  }
+
+  .contact .text {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .HomeSec .text-two {
+    font-size: 55px;
+  }
+
+  .HomeSec .text-three {
+    font-size: 33px;
+  }
+
+  .SkillsSec-details .boxes .per {
+    font-size: 50px;
+    color: #4070f4;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AboutSec .AboutSec-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .AboutSec .AboutSec-details .left,
+  .AboutSec .AboutSec-details .right {
+    width: 100%;
+  }
+
+  .AboutSec .left img {
+    width: 90%;
+    height: auto;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .AboutSec-details .right p {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  section .AboutButton button {
+    font-size: 16px;
+    padding: 10px;
+    width: 90%;
+  }
+
+  section .content {
+    height: auto;
+    padding-bottom: 40px;
+  }
+}
+

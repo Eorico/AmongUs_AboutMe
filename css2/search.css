@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        .SearchBody {
+            background-color: #0D0D0D;
+            background: url("../Images/bga.gif") no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Press Start 2P', sans-serif;
+            text-align: center;
+        }
+
+
+        .search-container {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            background: url("../Images/bga.gif") no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: 1000;
+            padding: 20px;
+             
+        }
+
+        .search-input {
+            border-radius: 30px;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: 3px solid rgb(155, 148, 148);
+            outline: none;
+            width: 300px;
+            background-color: black;
+            color: white;
+        }
+
+        .search-btn {
+            border-radius: 30px;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgb(192, 4, 4);
+            border: none;
+            color: white;
+        }
+
+        .search-btn:hover {
+            background-color: rgb(255, 0, 0);
+            color: black;
+            box-shadow: 0px 0px 15px rgb(212, 185, 185);
+        }
+
+        .results-container {
+            max-width: 90%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-group-item {
+            border-radius: 10px;
+            background: rgba(50, 50, 50, 0.9);
+            color: white;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: left;
+            padding: 15px;
+            border: 3px solid transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .list-group-item:nth-child(odd) { border-color: rgb(124, 107, 107); }
+        .list-group-item:nth-child(even) { border-color: rgb(255, 136, 0); }
+
+        strong { color: rgb(187, 212, 212); }
+
+        .among-us-character {
+            width: 80px;
+            height: 110px;
+            background-color: red;
+            border-radius: 40px;
+            position: relative;
+            display: inline-block;
+            margin-right: 15px;
+            transition: background-color 0.3s ease-in-out;
+            overflow: hidden;
+            border: 4px solid black;  
+        }
+
+        
+        .among-us-character::before {
+            content: "";
+            width: 50px;
+            height: 25px;
+            background: linear-gradient(to right, #aef, #77d, #5ab);
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            border: 3px solid black;  
+        }
+
+        
+        .among-us-character:hover {
+            transform: scale(1.1);
+        }
+
+        .Content{
+            padding-bottom: 80px;
+        }
+
+        .SearchFooter {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: url("../Images/bga.gif") no-repeat center center fixed;
+            background-size: cover;
+            padding: 15px;
+            text-align: center;
+            z-index: 100;
+        }
+        
+        footer .text span {
+            font-size: 15px;
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        footer .text span a {
+            font-weight: 500;
+            color: #FFF;
+            text-decoration: none;
+        }
+        
+        footer .text span a:hover {
+            text-decoration: underline;
+            color: #d13100;
+        }
+
+        .floatingVent {
+            position: fixed;
+            left: 8px;          
+            top: 20%;            
+            transform: translateY(-50%);   
+            animation: floatVent 3s ease-in-out infinite;  
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .floatingVent img {
+            width: 80px;   
+            height: 40px;
+        }
+        
+        .floatingVent:hover img{
+            content: url('../images2/vent.gif');
+        }
+        
+        @keyframes floatVent {
+            0% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-60%) translateX(0); }
+            100% { transform: translateY(-50%) translateX(0); }
+        }
+
+       
+@media (max-width: 768px) {
+    .search-container {
+        padding: 10px;
+    }
+
+    .search-input {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    .search-btn {
+        font-size: 16px;
+        width: 80%;
+    }
+
+    .results-container {
+        width: 100%;
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .list-group-item {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .among-us-character {
+        width: 60px;
+        height: 80px;
+    }
+
+    footer .text span {
+        font-size: 15px;
+    }
+
+    .floatingVent img {
+        width: 60px;
+        height: 30px;
+    }
+}
+
+ 
+@media (max-width: 576px) {
+    .search-container {
+        padding: 5px;
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .search-btn {
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .among-us-character {
+        width: 50px;
+        height: 70px;
+    }
+
+    .list-group-item {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .floatingVent img {
+        width: 50px;
+        height: 25px;
+    }
+}
