@@ -8,7 +8,23 @@
     color: white;
     font-family: 'Press Start 2P', sans-serif;
 }
+::-webkit-scrollbar {
+  width: 15px;
+}
 
+::-webkit-scrollbar-track {
+  background: #dbd9d9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f30a0a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d13100;
+}
 .IG-title {
     font-family: 'Ubuntu', sans-serif;
     color: white;
