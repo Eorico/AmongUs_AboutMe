@@ -195,15 +195,15 @@
             <div class="contact-form">
                 <form id="contactForm">
                     <div class="input-group">
-                        <input type="text" id="name" required>
+                        <input type="text" name="to_name" id="name" required>
                         <label for="name">Name</label>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="email" required>
+                        <input type="email" name="email_id" id="email" required>
                         <label for="email">Email@</label>
                     </div>
                     <div class="input-group">
-                        <textarea id="message" rows="4" required></textarea>
+                        <textarea id="message" name="message" rows="4" required></textarea>
                         <label for="message">Message Me!</label>
                     </div>
                     <button type="submit" class="send-btn">Submit</button>
@@ -226,6 +226,7 @@
   <script src="js/contact.js"></script>
   <script src="js/ScrollAnimation.js"></script>
   <script src="js1/hamburger.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
 
 </html>
