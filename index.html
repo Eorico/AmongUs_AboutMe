@@ -193,17 +193,17 @@
     <div class="scroll-animation">
         <div class="contact-wrapper">
             <div class="contact-form">
-                <form id="contactForm">
+                <form id="contactForm" method="POST" action="php/sendmail.php">
                     <div class="input-group">
-                        <input type="text" id="name" required>
+                        <input type="text" name="name" id="name" required>
                         <label for="name">Name</label>
                     </div>
                     <div class="input-group">
-                        <input type="email" id="email" required>
+                        <input type="email" name="email" id="email" required>
                         <label for="email">Email@</label>
                     </div>
                     <div class="input-group">
-                        <textarea id="message" rows="4" required></textarea>
+                        <textarea name="message" id="message" rows="4" required></textarea>
                         <label for="message">Message Me!</label>
                     </div>
                     <button type="submit" class="send-btn">Submit</button>
