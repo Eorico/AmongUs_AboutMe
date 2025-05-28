@@ -795,6 +795,41 @@ footer {
   padding: 15px 0;
   text-align: center;
   font-family: 'Press Start 2P', sans-serif;  
+  position: relative;
+}
+
+#referenceModal .modal-body a {
+  color: #d13100;  
+  text-decoration: none;
+}
+
+#referenceModal .modal-body a:hover {
+  text-decoration: underline;
+  color: #a02000; 
+}
+
+footer .footer-left {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+footer .footer-left button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+footer .footer-left button:hover {
+  background-color: #d13100;
+  border-color: #d13100;
+  color: white;
 }
 
 footer .text span {
@@ -826,6 +861,7 @@ footer .text span a:hover {
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.15);
   display: none;
+  z-index: 1000; 
 }
 
 
