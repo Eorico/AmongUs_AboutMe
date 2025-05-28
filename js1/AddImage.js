@@ -1,77 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sections = ['section1', 'section2', 'section3'];
-  let db;
 
-  const request = indexedDB.open('ImageDB', 1);
-
-  request.onerror = () => alert("❌ Failed to open IndexedDB.");
-  
-  request.onupgradeneeded = (event) => {
-    db = event.target.result;
-    sections.forEach(section => {
-      if (!db.objectStoreNames.contains(section)) {
-        db.createObjectStore(section, { keyPath: 'id', autoIncrement: true });
-      }
-    });
-  };
-
-  request.onsuccess = (event) => {
-    db = event.target.result;
-    sections.forEach(loadImagesForSection);
-
-    document.querySelectorAll('.new-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const sectionId = btn.dataset.section;
-        document.querySelector(`.file-input[data-section="${sectionId}"]`).click();
-      });
-    });
-
-    document.querySelectorAll('.file-input').forEach(input => {
-      input.addEventListener('change', (event) => {
-        const sectionId = input.dataset.section;
-        const file = event.target.files[0];
-        if (file) {
-          storeImage(sectionId, file);
-        }
-        input.value = '';
-      });
-    });
-  };
-
-  function storeImage(sectionId, file) {
-    const transaction = db.transaction([sectionId], 'readwrite');
-    const store = transaction.objectStore(sectionId);
-    const request = store.add({ image: file });
-
-    request.onsuccess = () => loadImagesForSection(sectionId);
-    request.onerror = () => alert("❌ Failed to save image.");
-  }
-
-  function loadImagesForSection(sectionId) {
+  sections.forEach(sectionId => {
     const container = document.querySelector(`#${sectionId} .image-layer-container`);
-    container.innerHTML = '';
-    const transaction = db.transaction([sectionId], 'readonly');
-    const store = transaction.objectStore(sectionId);
-    const request = store.getAll();
+    const images = JSON.parse(localStorage.getItem(sectionId) || '[]');
+    images.forEach((src, index) => {
+      addImageToContainer(container, src, index, sectionId);
+    });
+  });
 
-    request.onsuccess = () => {
-      const images = request.result;
-      images.forEach((record, index) => {
-        const src = URL.createObjectURL(record.image);
-        addImageToContainer(container, src, index, sectionId, record.id);
-      });
-    };
-  }
+  document.querySelectorAll('.new-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sectionId = btn.dataset.section;
+      const fileInput = document.querySelector(`.file-input[data-section="${sectionId}"]`);
+      fileInput.click();
+    });
+  });
 
-  function deleteImage(sectionId, imageId) {
-    const transaction = db.transaction([sectionId], 'readwrite');
-    const store = transaction.objectStore(sectionId);
-    const request = store.delete(imageId);
+  document.querySelectorAll('.file-input').forEach(input => {
+    input.addEventListener('change', (event) => {
+      const sectionId = input.dataset.section;
+      const container = document.querySelector(`#${sectionId} .image-layer-container`);
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const src = e.target.result;
+          let images = JSON.parse(localStorage.getItem(sectionId) || '[]');
+          images.unshift(src);
+          localStorage.setItem(sectionId, JSON.stringify(images));
+          container.innerHTML = '';
+          images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
+        };
+        reader.readAsDataURL(file);
+      }
+      input.value = '';
+    });
+  });
 
-    request.onsuccess = () => loadImagesForSection(sectionId);
-  }
-
-  function addImageToContainer(container, src, index, sectionId, id) {
+  function addImageToContainer(container, src, index, sectionId) {
     const wrapper = document.createElement('div');
     wrapper.className = 'image-wrapper';
     wrapper.style.top = `${index * 20}px`;
@@ -84,9 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const delBtn = document.createElement('button');
     delBtn.className = 'delete-btn';
     delBtn.innerText = '✕';
-    delBtn.onclick = () => deleteImage(sectionId, id);
+    delBtn.onclick = () => {
+      let images = JSON.parse(localStorage.getItem(sectionId) || '[]');
+      images.splice(index, 1);
+      localStorage.setItem(sectionId, JSON.stringify(images));
+      container.innerHTML = '';
+      images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
+    };
 
-    img.addEventListener('click', () => showImageFullscreen(src));
+    img.addEventListener('click', () => {
+      showImageFullscreen(src);
+    });
 
     wrapper.appendChild(img);
     wrapper.appendChild(delBtn);
