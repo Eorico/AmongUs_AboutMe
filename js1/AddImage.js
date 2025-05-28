@@ -1,4 +1,4 @@
-import { db, storage } from 'js1/firebase.js';
+import { db, storage } from './firebase.js';
 import {
   collection, doc, getDoc, setDoc
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
