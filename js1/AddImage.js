@@ -25,12 +25,33 @@ document.addEventListener('DOMContentLoaded', () => {
       if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
-          const src = e.target.result;
-          let images = JSON.parse(localStorage.getItem(sectionId) || '[]');
-          images.unshift(src);
-          localStorage.setItem(sectionId, JSON.stringify(images));
-          container.innerHTML = '';
-          images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
+          const img = new Image();
+          img.onload = function () {
+            const canvas = document.createElement('canvas');
+            const maxWidth = 800;
+            const scaleSize = maxWidth / img.width;
+            canvas.width = maxWidth;
+            canvas.height = img.height * scaleSize;
+
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.5); // 70% quality
+
+            let images = JSON.parse(localStorage.getItem(sectionId) || '[]');
+            images.unshift(compressedDataUrl);
+
+            try {
+              localStorage.setItem(sectionId, JSON.stringify(images));
+            } catch (err) {
+              alert("⚠️ Storage limit reached. Please delete an image before adding a new one.");
+              return;
+            }
+
+            container.innerHTML = '';
+            images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
+          };
+          img.src = e.target.result;
         };
         reader.readAsDataURL(file);
       }
