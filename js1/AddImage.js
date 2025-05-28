@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const sections = ['section1', 'section2', 'section3'];
+  const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6'];
 
   sections.forEach(sectionId => {
     const container = document.querySelector(`#${sectionId} .image-layer-container`);
@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function addImageToContainer(container, src, index, sectionId) {
     const wrapper = document.createElement('div');
     wrapper.className = 'image-wrapper';
-    wrapper.style.top = `${index * 20}px`;
-    wrapper.style.left = `${index * 20}px`;
+    wrapper.style.top = `${index * 5}px`;
+    wrapper.style.left = `${index * 1}px`;
     wrapper.style.zIndex = 100 - index;
 
     const img = document.createElement('img');
