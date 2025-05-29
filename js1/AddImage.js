@@ -18,11 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageRef = db.ref(`sections/${sectionId}`);
 
     imageRef.on('value', snapshot => {
-      const images = [];
-      snapshot.forEach(child => images.push(child.val()));
-      images.forEach((img, idx) => {
-        const zIndex = idx + 1; 
-        addImageToContainer(container, img, zIndex, sectionId);
+      snapshot.forEach(child => {
+        const key = child.key;
+        const img = child.val();
+
+        // Skip if already exists
+        if (container.querySelector(`.image-wrapper[data-key="${key}"]`)) return;
+
+        const zIndex = container.children.length + 1;
+        addImageToContainer(container, img, zIndex, sectionId, key);
       });
     });
   });
@@ -96,10 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return data.secure_url;
   }
 
-  function addImageToContainer(container, src, zIndex, sectionId) {
+  function addImageToContainer(container, src, zIndex, sectionId, key) {
     const wrapper = document.createElement('div');
     wrapper.className = 'image-wrapper';
+    wrapper.dataset.key = key;
     wrapper.style.margin = '10px';
+
     const img = document.createElement('img');
     img.src = src;
 
@@ -108,15 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
     delBtn.innerText = '✕';
 
     delBtn.onclick = async () => {
-      const imageRef = db.ref(`sections/${sectionId}`);
-      const snapshot = await imageRef.once('value');
-      const updates = {};
-      let i = 0;
-      snapshot.forEach(child => {
-        if (i !== zIndex - 1) updates[child.key] = child.val();
-        i++;
-      });
-      await imageRef.set(updates);
+      const imageRef = db.ref(`sections/${sectionId}/${key}`);
+      await imageRef.remove();
+      wrapper.remove(); // Smooth removal from DOM
     };
 
     img.addEventListener('click', () => {
