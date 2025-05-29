@@ -1002,6 +1002,35 @@ footer .text span a:hover {
     color: white; 
     cursor: pointer;
   }
+
+   /* Hide all menu items except "More" */
+  .menu > li:not(.MoreOptions) {
+    display: none;
+  }
+
+  /* Ensure "More" menu is visible */
+  .menu > .MoreOptions {
+    display: block;
+  }
+
+  /* Hide the logo */
+  .logo {
+    display: none;
+  }
+
+ /* Show media icons */
+  .media-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  /* Adjust the navigation bar for mobile */
+  .DivBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
  
 @media (max-width: 480px) {
