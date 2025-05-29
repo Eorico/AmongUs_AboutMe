@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Remove prefix "data:image/jpeg;base64,"
     const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
 
-    const cloudName = "dnyfrllwu";
-    const uploadPreset = "ypokgkaq";
+    const cloudName = "dt9oj9kmh";
+    const uploadPreset = "unsigned_portfolio";
 
     const formData = new FormData();
     formData.append('file', 'data:image/jpeg;base64,' + base64Data);
