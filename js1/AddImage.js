@@ -1,24 +1,13 @@
-import { db, storage } from './firebase.js';
-import {
-  collection, doc, getDoc, setDoc
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import {
-  ref, uploadString, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
-
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6'];
 
-  for (const sectionId of sections) {
+  sections.forEach(sectionId => {
     const container = document.querySelector(`#${sectionId} .image-layer-container`);
-    const docRef = doc(collection(db, "sections"), sectionId);
-    const docSnap = await getDoc(docRef);
-    const images = docSnap.exists() ? docSnap.data().images || [] : [];
-
-    images.forEach((url, index) => {
-      addImageToContainer(container, url, index, sectionId);
+    const images = JSON.parse(localStorage.getItem(sectionId) || '[]');
+    images.forEach((src, index) => {
+      addImageToContainer(container, src, index, sectionId);
     });
-  }
+  });
 
   document.querySelectorAll('.new-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -29,16 +18,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   document.querySelectorAll('.file-input').forEach(input => {
-    input.addEventListener('change', async (event) => {
+    input.addEventListener('change', (event) => {
       const sectionId = input.dataset.section;
       const container = document.querySelector(`#${sectionId} .image-layer-container`);
       const file = event.target.files[0];
-
       if (file) {
         const reader = new FileReader();
-        reader.onload = async function (e) {
+        reader.onload = function (e) {
           const img = new Image();
-          img.onload = async function () {
+          img.onload = function () {
             const canvas = document.createElement('canvas');
             const maxWidth = 800;
             const scaleSize = maxWidth / img.width;
@@ -48,27 +36,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            const dataUrl = canvas.toDataURL('image/jpeg', 0.5);
-            const filename = `${sectionId}_${Date.now()}.jpg`;
-            const storageRef = ref(storage, `images/${sectionId}/${filename}`);
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.5); // 70% quality
+
+            let images = JSON.parse(localStorage.getItem(sectionId) || '[]');
+            images.unshift(compressedDataUrl);
 
             try {
-              await uploadString(storageRef, dataUrl, 'data_url');
-              const downloadURL = await getDownloadURL(storageRef);
-
-              const docRef = doc(collection(db, "sections"), sectionId);
-              const docSnap = await getDoc(docRef);
-              const images = docSnap.exists() ? docSnap.data().images || [] : [];
-
-              images.unshift(downloadURL);
-              await setDoc(docRef, { images });
-
-              container.innerHTML = '';
-              images.forEach((url, idx) => addImageToContainer(container, url, idx, sectionId));
+              localStorage.setItem(sectionId, JSON.stringify(images));
             } catch (err) {
-              console.error("Upload failed", err);
-              alert("⚠️ Upload failed. Please try again.");
+              alert("⚠️ Storage limit reached. Please delete an image before adding a new one.");
+              return;
             }
+
+            container.innerHTML = '';
+            images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
           };
           img.src = e.target.result;
         };
@@ -91,17 +72,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const delBtn = document.createElement('button');
     delBtn.className = 'delete-btn';
     delBtn.innerText = '✕';
-    delBtn.onclick = async () => {
-      const docRef = doc(collection(db, "sections"), sectionId);
-      const docSnap = await getDoc(docRef);
-      let images = docSnap.exists() ? docSnap.data().images || [] : [];
+    delBtn.onclick = () => {
+      let images = JSON.parse(localStorage.getItem(sectionId) || '[]');
       images.splice(index, 1);
-      await setDoc(docRef, { images });
+      localStorage.setItem(sectionId, JSON.stringify(images));
       container.innerHTML = '';
-      images.forEach((url, idx) => addImageToContainer(container, url, idx, sectionId));
+      images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
     };
 
-    img.addEventListener('click', () => showImageFullscreen(src));
+    img.addEventListener('click', () => {
+      showImageFullscreen(src);
+    });
+
     wrapper.appendChild(img);
     wrapper.appendChild(delBtn);
     container.appendChild(wrapper);
