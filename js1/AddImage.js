@@ -25,7 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
       snapshot.forEach(child => images.push(child.val()));
 
       container.innerHTML = '';
-      images.forEach((img, idx) => addImageToContainer(container, img, idx, sectionId));
+      images.forEach((img, idx) => {
+        // Reversing index so latest image appears on top
+        const zIndex = idx + 1; 
+        addImageToContainer(container, img, zIndex, sectionId);
+      });
     });
   });
 
@@ -42,21 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.file-input').forEach(input => {
     input.addEventListener('change', async (event) => {
       const sectionId = input.dataset.section;
-      const container = document.querySelector(`#${sectionId} .image-layer-container`);
       const file = event.target.files[0];
       if (file) {
         try {
-          // Compress and resize image client-side
           const compressedDataUrl = await compressImage(file, 800, 0.5);
-          
-          // Upload compressed image to Cloudinary
           const uploadedUrl = await uploadToCloudinary(compressedDataUrl);
-          
-          // Save uploaded image URL to Firebase Realtime Database
           const imageRef = db.ref(`sections/${sectionId}`);
           await imageRef.push(uploadedUrl);
-
-          // Firebase on('value') listener updates UI automatically
         } catch (err) {
           alert("Upload failed: " + err.message);
         }
@@ -91,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Upload base64 image data URL to Cloudinary
   async function uploadToCloudinary(dataUrl) {
-    // Remove prefix "data:image/jpeg;base64,"
     const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
 
     const cloudName = "dt9oj9kmh";
@@ -108,16 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!response.ok) throw new Error('Cloudinary upload failed');
 
     const data = await response.json();
-    return data.secure_url; // Return the URL of uploaded image
+    return data.secure_url;
   }
 
   // Add image element with delete button
-  function addImageToContainer(container, src, index, sectionId) {
+  function addImageToContainer(container, src, zIndex, sectionId) {
     const wrapper = document.createElement('div');
     wrapper.className = 'image-wrapper';
-    wrapper.style.top = `${index * 5}px`;
-    wrapper.style.left = `${index * 1}px`;
-    wrapper.style.zIndex = 100 - index;
+    wrapper.style.position = 'absolute';
+    wrapper.style.top = `${zIndex * 5}px`;
+    wrapper.style.left = `${zIndex * 1}px`;
+    wrapper.style.zIndex = zIndex;
 
     const img = document.createElement('img');
     img.src = src;
@@ -132,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const updates = {};
       let i = 0;
       snapshot.forEach(child => {
-        if (i !== index) updates[child.key] = child.val();
+        if (i !== zIndex - 1) updates[child.key] = child.val();
         i++;
       });
       await imageRef.set(updates);
