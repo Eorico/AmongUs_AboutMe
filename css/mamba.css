@@ -622,12 +622,14 @@ section .AboutButton button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 200px;
   height: 200px;
+  z-index: auto
 }
 
 .image-layer-container .image-wrapper:hover {
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(0, 140, 255, 0.6);
-  z-index: 999;
+  z-index: 10;
+  
 }
 
 .image-layer-container img {

@@ -1,4 +1,3 @@
-// Include this at the top (after loading firebase scripts in your HTML)
 const firebaseConfig = {
   apiKey: "AIzaSyB966LQtDSGb2LnZ_jMHFMYsHfwjRviU18",
   authDomain: "websiteaddimage.firebaseapp.com",
@@ -13,9 +12,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
 document.addEventListener('DOMContentLoaded', () => {
-  const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6'];
-
-  // Load images from Firebase DB for each section
+  const sections = ['section1', 'section2', 'section3', 'section4', 'section5'];
   sections.forEach(sectionId => {
     const container = document.querySelector(`#${sectionId} .image-layer-container`);
     const imageRef = db.ref(`sections/${sectionId}`);
@@ -23,17 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     imageRef.on('value', snapshot => {
       const images = [];
       snapshot.forEach(child => images.push(child.val()));
-
-      container.innerHTML = '';
       images.forEach((img, idx) => {
-        // Reversing index so latest image appears on top
         const zIndex = idx + 1; 
         addImageToContainer(container, img, zIndex, sectionId);
       });
     });
   });
 
-  // When user clicks the "new image" button, trigger file input click
   document.querySelectorAll('.new-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const sectionId = btn.dataset.section;
@@ -42,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // When file selected, upload to Cloudinary, then save URL to Firebase
   document.querySelectorAll('.file-input').forEach(input => {
     input.addEventListener('change', async (event) => {
       const sectionId = input.dataset.section;
@@ -61,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Helper function to compress image using canvas
   function compressImage(file, maxWidth, quality) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -85,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Upload base64 image data URL to Cloudinary
   async function uploadToCloudinary(dataUrl) {
     const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
 
@@ -106,15 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return data.secure_url;
   }
 
-  // Add image element with delete button
   function addImageToContainer(container, src, zIndex, sectionId) {
     const wrapper = document.createElement('div');
     wrapper.className = 'image-wrapper';
-    wrapper.style.position = 'absolute';
-    wrapper.style.top = `${zIndex * 5}px`;
-    wrapper.style.left = `${zIndex * 1}px`;
-    wrapper.style.zIndex = zIndex;
-
+    wrapper.style.margin = '10px';
     const img = document.createElement('img');
     img.src = src;
 
@@ -143,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(wrapper);
   }
 
-  // Fullscreen image modal
   function showImageFullscreen(src) {
     const modal = document.createElement('div');
     modal.className = 'fullscreen-modal';
